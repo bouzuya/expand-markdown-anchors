@@ -8,7 +8,8 @@ expand-markdown-anchors
 import * as assert from 'assert';
 import { expand } from 'expand-markdown-anchors';
 
-assert(expand('[user/repo][]') === 'https://github.com/user/repo');
+assert(expand('[user/repo][]') === '[user/repo]: https://github.com/user/repo');
+assert(expand('[npm:pkg][]') === '[npm:pkg]: https://www.npmjs.com/package/pkg');
 ```
 
 ## Badges
