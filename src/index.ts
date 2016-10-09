@@ -30,4 +30,20 @@ const expand = (s: string): string[] => {
   }
 };
 
-export { expand };
+const match = (s: string): string[] => {
+  const refs: string[] = [];
+  const r = /(?:\[(.+?)\]\[\])|(?:\[.+?\]\[(.+?)\])/g;
+  while (true) {
+    const m = r.exec(s);
+    if (m === null) return refs;
+    const refName1: string | undefined = m[1];
+    const refName2: string | undefined = m[2];
+    const refName = typeof refName1 !== 'undefined'
+      ? refName1 : typeof refName2 !== 'undefined'
+        ? refName2 : '';
+    const ref = expandOne(refName);
+    if (ref !== null) refs.push(refName);
+  }
+};
+
+export { expand, match };
