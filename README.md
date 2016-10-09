@@ -2,14 +2,30 @@
 
 expand-markdown-anchors
 
+## Installation
+
+```
+$ npm install https://github.com/bouzuya/expand-markdown-anchors/archive/0.2.0.tar.gz
+```
+
 ## Usage
 
 ```ts
 import * as assert from 'assert';
-import { expand } from 'expand-markdown-anchors';
+import { expand, match } from 'expand-markdown-anchors';
 
-assert(expand('[user/repo][]') === '[user/repo]: https://github.com/user/repo');
-assert(expand('[npm:pkg][]') === '[npm:pkg]: https://www.npmjs.com/package/pkg');
+assert.deepStrictEqual(expand('[user/repo][]'), [
+  '[user/repo]: https://github.com/user/repo'
+]);
+assert.deepStrictEqual(expand('[npm:pkg][]'), [
+  '[npm:pkg]: https://www.npmjs.com/package/pkg'
+]);
+assert.deepStrictEqual(match('[user/repo][]'), [
+  'user/repo'
+]);
+assert.deepStrictEqual(match('[npm:pkg][]'), [
+  '[npm:pkg]: https://www.npmjs.com/package/pkg'
+]);
 ```
 
 ## Badges
