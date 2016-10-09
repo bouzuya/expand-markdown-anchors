@@ -14,12 +14,12 @@ const expandOne = (refName: string): string | null => {
   }, <string | null>null);
 };
 
-const expand = (s: string): string => {
+const expand = (s: string): string[] => {
   const refs: string[] = [];
   const r = /(?:\[(.+?)\]\[\])|(?:\[.+?\]\[(.+?)\])/g;
   while (true) {
     const m = r.exec(s);
-    if (m === null) return refs.join('\n');
+    if (m === null) return refs;
     const refName1: string | undefined = m[1];
     const refName2: string | undefined = m[2];
     const refName = typeof refName1 !== 'undefined'
