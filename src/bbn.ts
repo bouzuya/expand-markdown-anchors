@@ -4,7 +4,7 @@ const expand = (refName: string): string | null => {
   const y: string = match[1];
   const m: string = match[2];
   const d: string = match[3];
-  return `[${refName}]: http://blog.bouzuya.net/${y}/${m}/${d}/`;
+  return `[${refName}]: https://blog.bouzuya.net/${y}/${m}/${d}/`;
 };
 
 export { expand };
