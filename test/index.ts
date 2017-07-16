@@ -1,6 +1,7 @@
 import * as assert from 'power-assert';
 import { run, test } from 'beater';
 import { expand, match } from '../src/';
+import { tests as refsTests } from './refs';
 
 const category = 'index > ';
 
@@ -67,4 +68,4 @@ const tests = [
   })
 ];
 
-run(tests).catch(() => process.exit(1));
+run(tests.concat(refsTests)).catch(() => process.exit(1));

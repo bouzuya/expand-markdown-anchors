@@ -2,6 +2,7 @@ import { expand as amazon } from './amazon';
 import { expand as bbn } from './bbn';
 import { expand as github } from './github';
 import { expand as npm } from './npm';
+import { refs } from './refs';
 
 const expandOne = (refName: string): string | null => {
   return [
@@ -15,35 +16,13 @@ const expandOne = (refName: string): string | null => {
 };
 
 const expand = (s: string): string[] => {
-  const refs: string[] = [];
-  const r = /(?:\[(.+?)\]\[\])|(?:\[.+?\]\[(.+?)\])/g;
-  while (true) {
-    const m = r.exec(s);
-    if (m === null) return refs;
-    const refName1: string | undefined = m[1];
-    const refName2: string | undefined = m[2];
-    const refName = typeof refName1 !== 'undefined'
-      ? refName1 : typeof refName2 !== 'undefined'
-        ? refName2 : '';
-    const ref = expandOne(refName);
-    if (ref !== null) refs.push(ref);
-  }
+  return refs(s)
+    .map((ref) => expandOne(ref))
+    .filter((expanded): expanded is string => expanded !== null);
 };
 
 const match = (s: string): string[] => {
-  const refs: string[] = [];
-  const r = /(?:\[(.+?)\]\[\])|(?:\[.+?\]\[(.+?)\])/g;
-  while (true) {
-    const m = r.exec(s);
-    if (m === null) return refs;
-    const refName1: string | undefined = m[1];
-    const refName2: string | undefined = m[2];
-    const refName = typeof refName1 !== 'undefined'
-      ? refName1 : typeof refName2 !== 'undefined'
-        ? refName2 : '';
-    const ref = expandOne(refName);
-    if (ref !== null) refs.push(refName);
-  }
+  return refs(s).filter((ref) => expandOne(ref) !== null);
 };
 
 export { expand, match };
