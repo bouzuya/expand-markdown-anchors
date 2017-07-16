@@ -35,6 +35,9 @@
     "typescript": "^2.4.1",
     "watch": "^1.0.2"
   },
+  "files": [
+    "lib"
+  ],
   "homepage": "https://github.com/bouzuya/expand-markdown-anchors#readme",
   "keywords": [],
   "license": "MIT",
