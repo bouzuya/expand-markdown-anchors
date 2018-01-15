@@ -55,7 +55,7 @@
     "copy:js": "cpx '.tmp/es5/src/**/*.js' 'lib/'",
     "lint": "npm-run-all -p 'lint:*'",
     "lint:ts": "tslint --project tsconfig.json",
-    "prepublish": "npm-run-all -s 'clean' -p 'lint' 'build'",
+    "prepare": "npm-run-all -s 'clean' -p 'lint' 'build'",
     "start": "node examples/index.js",
     "test": "node .tmp/es5/test/index.js",
     "watch": "npm-run-all -p 'watch:*'",
