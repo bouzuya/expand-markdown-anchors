@@ -30,10 +30,13 @@ assert.deepStrictEqual(match('[npm:pkg][]'), [
 
 ## Badges
 
-[![Travis CI][travis-ci-badge]][travis-ci]
+[![npm version][npm-badge-url]][npm-url]
+[![Travis CI][travisci-badge-url]][travisci-url]
 
-[travis-ci-badge]: https://img.shields.io/travis/bouzuya/expand-markdown-anchors.svg
-[travis-ci]: https://travis-ci.org/bouzuya/expand-markdown-anchors
+[npm-badge-url]: https://img.shields.io/npm/v/@bouzuya/expand-markdown-anchors.svg
+[npm-url]: https://www.npmjs.com/package/@bouzuya/expand-markdown-anchors
+[travisci-badge-url]: https://img.shields.io/travis/bouzuya/expand-markdown-anchors.svg
+[travisci-url]: https://travis-ci.org/bouzuya/expand-markdown-anchors
 
 ## License
 
