@@ -48,7 +48,7 @@
   },
   "scripts": {
     "build": "npm-run-all -s 'build:ts' 'build:es2017' -p 'copy:*'",
-    "build:es2017": "babel --out-dir .tmp/es5/ .tmp/es2017/",
+    "build:es2017": "babel --out-dir .tmp/es5/ --quiet .tmp/es2017/",
     "build:ts": "tsc",
     "clean": "rimraf .tmp lib",
     "copy:dts": "cpx '.tmp/es2017/src/**/*.d.ts' 'lib/'",
