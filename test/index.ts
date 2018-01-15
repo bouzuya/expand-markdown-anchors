@@ -65,6 +65,14 @@ const tests = [
     assert.deepStrictEqual(match('[npm:pkg][]'), [
       'npm:pkg'
     ]);
+  }),
+  test(category + 'npm: (npm scoped)', () => {
+    assert.deepStrictEqual(expand('[npm:@scope/pkg][]'), [
+      '[npm:@scope/pkg]: https://www.npmjs.com/package/@scope/pkg'
+    ]);
+    assert.deepStrictEqual(match('[npm:@scope/pkg][]'), [
+      'npm:@scope/pkg'
+    ]);
   })
 ];
 

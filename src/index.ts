@@ -8,8 +8,8 @@ const expandOne = (refName: string): string | null => {
   return [
     amazon,
     bbn,
-    github,
-    npm
+    npm,
+    github
   ].reduce((result, expand) => {
     return result === null ? expand(refName) : result;
   }, <string | null>null);
