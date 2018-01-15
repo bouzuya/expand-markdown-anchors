@@ -5,7 +5,7 @@ expand-markdown-anchors
 ## Installation
 
 ```
-$ npm install https://github.com/bouzuya/expand-markdown-anchors/archive/0.2.0.tar.gz
+$ npm install @bouzuya/expand-markdown-anchors
 ```
 
 ## Usage
