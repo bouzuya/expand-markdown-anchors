@@ -1,8 +1,8 @@
-import { expand as amazon } from './amazon';
-import { expand as bbn } from './bbn';
-import { expand as github } from './github';
-import { expand as npm } from './npm';
 import { refs } from './refs';
+import { expand as amazon } from './rules/amazon';
+import { expand as bbn } from './rules/bbn';
+import { expand as github } from './rules/github';
+import { expand as npm } from './rules/npm';
 
 const expandOne = (refName: string): string | null => {
   return [
