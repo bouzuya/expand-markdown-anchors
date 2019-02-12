@@ -3,13 +3,15 @@ import { expand as amazon } from './rules/amazon';
 import { expand as bbn } from './rules/bbn';
 import { expand as github } from './rules/github';
 import { expand as npm } from './rules/npm';
+import { expand as rfc } from './rules/rfc';
 
 const expandOne = (refName: string): string | null => {
   return [
     amazon,
     bbn,
     npm,
-    github
+    github,
+    rfc
   ].reduce((result, expand) => {
     return result === null ? expand(refName) : result;
   }, <string | null>null);

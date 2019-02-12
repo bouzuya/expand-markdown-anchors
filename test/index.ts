@@ -73,6 +73,14 @@ const tests = [
     assert.deepStrictEqual(match('[npm:@scope/pkg][]'), [
       'npm:@scope/pkg'
     ]);
+  }),
+  test(category + 'rfc:', () => {
+    assert.deepStrictEqual(expand('[rfc:9999][]'), [
+      '[rfc:9999]: https://tools.ietf.org/html/rfc9999'
+    ]);
+    assert.deepStrictEqual(match('[rfc:9999][]'), [
+      'rfc:9999'
+    ]);
   })
 ];
 

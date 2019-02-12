@@ -26,6 +26,9 @@ assert.deepStrictEqual(match('[user/repo][]'), [
 assert.deepStrictEqual(match('[npm:pkg][]'), [
   '[npm:pkg]: https://www.npmjs.com/package/pkg'
 ]);
+assert.deepStrictEqual(match('[rfc:9999][]'), [
+  '[rfc:9999]: https://tools.ietf.org/html/rfc9999
+]);
 ```
 
 ## Badges
