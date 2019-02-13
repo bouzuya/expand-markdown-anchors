@@ -81,6 +81,14 @@ const tests = [
     assert.deepStrictEqual(match('[rfc:9999][]'), [
       'rfc:9999'
     ]);
+  }),
+  test(category + 'vscode:', () => {
+    assert.deepStrictEqual(expand('[vscode:bouzuya.bs-code][]'), [
+      '[vscode:bouzuya.bs-code]: https://marketplace.visualstudio.com/items?itemName=bouzuya.bs-code'
+    ]);
+    assert.deepStrictEqual(match('[vscode:bouzuya.bs-code][]'), [
+      'vscode:bouzuya.bs-code'
+    ]);
   })
 ];
 

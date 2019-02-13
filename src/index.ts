@@ -4,6 +4,7 @@ import { expand as bbn } from './rules/bbn';
 import { expand as github } from './rules/github';
 import { expand as npm } from './rules/npm';
 import { expand as rfc } from './rules/rfc';
+import { expand as vscode } from './rules/vscode';
 
 const expandOne = (refName: string): string | null => {
   return [
@@ -11,7 +12,8 @@ const expandOne = (refName: string): string | null => {
     bbn,
     npm,
     github,
-    rfc
+    rfc,
+    vscode
   ].reduce((result, expand) => {
     return result === null ? expand(refName) : result;
   }, <string | null>null);

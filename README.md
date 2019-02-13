@@ -17,17 +17,17 @@ import { expand, match } from 'expand-markdown-anchors';
 assert.deepStrictEqual(expand('[user/repo][]'), [
   '[user/repo]: https://github.com/user/repo'
 ]);
-assert.deepStrictEqual(expand('[npm:pkg][]'), [
-  '[npm:pkg]: https://www.npmjs.com/package/pkg'
-]);
 assert.deepStrictEqual(match('[user/repo][]'), [
   'user/repo'
 ]);
-assert.deepStrictEqual(match('[npm:pkg][]'), [
+assert.deepStrictEqual(expand('[npm:pkg][]'), [
   '[npm:pkg]: https://www.npmjs.com/package/pkg'
 ]);
-assert.deepStrictEqual(match('[rfc:9999][]'), [
-  '[rfc:9999]: https://tools.ietf.org/html/rfc9999
+assert.deepStrictEqual(expand('[rfc:9999][]'), [
+  '[rfc:9999]: https://tools.ietf.org/html/rfc9999'
+]);
+assert.deepStrictEqual(expand('[vscode:bouzuya.bs-code][]'), [
+  '[vscode:bouzuya.bs-code]: https://marketplace.visualstudio.com/items?itemName=bouzuya.bs-code'
 ]);
 ```
 
