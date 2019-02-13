@@ -14,8 +14,9 @@ const patterns = (level: number, chars: string[]): string[] => {
   }, chars);
 };
 
+const category = '/refs ';
 const tests: Test[] = [
-  test('refs > simple', () => {
+  test(category + 'simple', () => {
     assert.deepEqual(
       patterns(5, '1[]()'.split(''))
         .map((p) => [p, f(p)])
@@ -31,7 +32,7 @@ const tests: Test[] = [
       ]
     );
   }),
-  test('refs > nested', () => {
+  test(category + 'nested', () => {
     assert.deepEqual(
       patterns(5, '1[]()'.split(''))
         .map((p) => '[' + p + '][2]')
