@@ -6,17 +6,23 @@ import { expand as npm } from './rules/npm';
 import { expand as rfc } from './rules/rfc';
 import { expand as vscode } from './rules/vscode';
 
+const defaultRules = [
+  amazon,
+  bbn,
+  npm,
+  github,
+  rfc,
+  vscode
+];
+
 const expandOne = (refName: string): string | null => {
-  return [
-    amazon,
-    bbn,
-    npm,
-    github,
-    rfc,
-    vscode
-  ].reduce((result, expand) => {
-    return result === null ? expand(refName) : result;
-  }, <string | null>null);
+  return defaultRules.reduce((result, expand) => {
+    if (result !== null) return result;
+    const expanded = expand(refName);
+    return expanded === null
+      ? null
+      : `[${refName}]: ${expanded}`;
+  }, null as string | null);
 };
 
 const expand = (s: string): string[] => {
