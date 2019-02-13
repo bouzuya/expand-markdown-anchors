@@ -1,9 +1,9 @@
 import * as assert from 'power-assert';
-import { test } from 'beater';
+import { Test, test } from 'beater';
 import { expand, match } from '../src';
 
 const category = '/rules ';
-const tests = [
+const tests: Test[] = [
   test(category + 'asin: (amazon)', () => {
     assert.deepStrictEqual(expand('[asin:4798113468][]'), [
       '[asin:4798113468]: https://www.amazon.co.jp/dp/4798113468/'

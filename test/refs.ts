@@ -50,7 +50,7 @@ const tests: Test[] = [
       ]
     );
   }),
-  test('res > ref with text', () => {
+  test(category + 'ref with text', () => {
     assert.deepEqual(f('[1][2]'), ['2']);
   })
 ];
