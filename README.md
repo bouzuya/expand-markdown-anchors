@@ -12,7 +12,7 @@ $ npm install @bouzuya/expand-markdown-anchors
 
 ```ts
 import * as assert from 'assert';
-import { expand, match } from 'expand-markdown-anchors';
+import { expand, init, match } from 'expand-markdown-anchors';
 
 assert.deepStrictEqual(expand('[user/repo][]'), [
   '[user/repo]: https://github.com/user/repo'
@@ -29,6 +29,17 @@ assert.deepStrictEqual(expand('[rfc:9999][]'), [
 assert.deepStrictEqual(expand('[vscode:bouzuya.bs-code][]'), [
   '[vscode:bouzuya.bs-code]: https://marketplace.visualstudio.com/items?itemName=bouzuya.bs-code'
 ]);
+
+// use custom rules
+
+const { expand: myExpand, match: myMatch } = init([
+  (s) => s === 'a/b' ? 'http://example.com' : null
+]);
+assert.deepStrictEqual(myExpand('[text][a/b]'), [
+  '[a/b]: http://example.com'
+]);
+assert.deepStrictEqual(myMatch('[text][a/b]'), ['a/b']);
+assert.deepStrictEqual(myMatch('[text][c/d]'), []);
 ```
 
 ## Badges
