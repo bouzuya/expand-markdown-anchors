@@ -6,7 +6,9 @@ import { expand as npm } from './rules/npm';
 import { expand as rfc } from './rules/rfc';
 import { expand as vscode } from './rules/vscode';
 
-const defaultRules = [
+type Rule = (s: string) => string | null;
+
+const defaultRules: Rule[] = [
   amazon,
   bbn,
   npm,
@@ -15,8 +17,8 @@ const defaultRules = [
   vscode
 ];
 
-const expandOne = (refName: string): string | null => {
-  return defaultRules.reduce((result, expand) => {
+const makeExpandOne = (rules: Rule[]) => (refName: string): string | null => {
+  return rules.reduce((result, expand) => {
     if (result !== null) return result;
     const expanded = expand(refName);
     return expanded === null
@@ -25,14 +27,31 @@ const expandOne = (refName: string): string | null => {
   }, null as string | null);
 };
 
-const expand = (s: string): string[] => {
+const makeExpand = (
+  expandOne: (s: string) => string | null
+) => (s: string): string[] => {
   return refs(s)
     .map((ref) => expandOne(ref))
     .filter((expanded): expanded is string => expanded !== null);
 };
 
-const match = (s: string): string[] => {
+const makeMatch = (
+  expandOne: (s: string) => string | null
+) => (s: string): string[] => {
   return refs(s).filter((ref) => expandOne(ref) !== null);
 };
 
-export { expand, match };
+// ---
+
+const init = (
+  rules: Rule[]
+): { expand: (s: string) => string[]; match: (s: string) => string[]; } => {
+  const expandOne = makeExpandOne(rules);
+  const expand = makeExpand(expandOne);
+  const match = makeMatch(expandOne);
+  return { expand, match };
+};
+
+const { expand, match } = init(defaultRules);
+
+export { expand, init, match };
