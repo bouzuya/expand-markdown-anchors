@@ -52,6 +52,14 @@ const tests: Test[] = [
       'npm:@scope/pkg'
     ]);
   }),
+  test(category + 'pursuit:', () => {
+    assert.deepStrictEqual(expand('[pursuit:pkg][]'), [
+      '[pursuit:pkg]: https://pursuit.purescript.org/packages/pkg/'
+    ]);
+    assert.deepStrictEqual(match('[pursuit:purescript-pkg][]'), [
+      'pursuit:purescript-pkg'
+    ]);
+  }),
   test(category + 'rfc:', () => {
     assert.deepStrictEqual(expand('[rfc:9999][]'), [
       '[rfc:9999]: https://tools.ietf.org/html/rfc9999'

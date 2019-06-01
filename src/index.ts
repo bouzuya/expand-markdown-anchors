@@ -3,6 +3,7 @@ import { expand as amazon } from './rules/amazon';
 import { expand as bbn } from './rules/bbn';
 import { expand as github } from './rules/github';
 import { expand as npm } from './rules/npm';
+import { expand as pursuit } from './rules/pursuit';
 import { expand as rfc } from './rules/rfc';
 import { expand as vscode } from './rules/vscode';
 
@@ -12,6 +13,7 @@ const defaultRules: Rule[] = [
   amazon,
   bbn,
   npm,
+  pursuit,
   github,
   rfc,
   vscode
