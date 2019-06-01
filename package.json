@@ -23,6 +23,7 @@
   "bugs": {
     "url": "https://github.com/bouzuya/expand-markdown-anchors/issues"
   },
+  "dependencies": {},
   "devDependencies": {
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.5",
@@ -33,7 +34,6 @@
     "@types/sinon": "^7.0.12",
     "babel-preset-power-assert": "^3.0.0",
     "beater": "^6.0.1",
-    "cpx": "^1.5.0",
     "npm-run-all": "^4.1.5",
     "power-assert": "^1.6.1",
     "proxyquire": "^2.1.0",
@@ -55,12 +55,11 @@
     "url": "https://github.com/bouzuya/expand-markdown-anchors"
   },
   "scripts": {
-    "build": "npm-run-all -s 'build:ts' 'build:es2017' -p 'copy:*'",
+    "build": "npm-run-all -s 'build:ts' 'build:es2017' 'build:lib'",
     "build:es2017": "babel --out-dir .tmp/es5/ .tmp/es2017/",
+    "build:lib": "babel --copy-files --out-dir lib/ .tmp/es2017/src",
     "build:ts": "tsc",
     "clean": "rimraf .tmp lib",
-    "copy:dts": "cpx '.tmp/es2017/src/**/*.d.ts' 'lib/'",
-    "copy:js": "cpx '.tmp/es5/src/**/*.js' 'lib/'",
     "lint": "npm-run-all -p 'lint:*'",
     "lint:ts": "tslint --project tsconfig.json",
     "prepare": "npm-run-all -s 'clean' -p 'lint' 'build'",
@@ -72,6 +71,5 @@
     "watch:test": "watch --wait 2 'npm test' '.tmp/es5/'",
     "watch:ts": "npm run 'build:ts' -- --watch"
   },
-  "typings": "lib/index.d.ts",
-  "dependencies": {}
+  "typings": "lib/index.d.ts"
 }
