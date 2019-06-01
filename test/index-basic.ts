@@ -1,4 +1,4 @@
-import * as assert from 'power-assert';
+import assert from 'power-assert';
 import { Test, test } from 'beater';
 import { expand, init, match } from '../src';
 

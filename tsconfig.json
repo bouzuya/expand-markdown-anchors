@@ -1,8 +1,11 @@
 {
   "compilerOptions": {
     "declaration": true,
+    "inlineSourceMap": true,
     "module": "commonjs",
     "moduleResolution": "node",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
     "noImplicitReturns": true,
@@ -14,7 +17,6 @@
     "rootDir": ".",
     "sourceMap": false,
     "strict": true,
-    "strictNullChecks": true,
     "target": "es2017"
   },
   "files": [
